@@ -17,6 +17,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button Sub;
     Button Mul;
     Button Div;
+    Button Sin;
+    Button Cos;
+    Button Tan;
+    Button Sqrt;
+    Button Log;
     TextView Result;
 
     @Override
@@ -31,6 +36,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Sub = findViewById(R.id.Sub);
         Mul = findViewById(R.id.Mul);
         Div = findViewById(R.id.Div);
+        Sin = findViewById(R.id.Sin);
+        Cos = findViewById(R.id.Cos);
+        Tan = findViewById(R.id.Tan);
+        Sqrt = findViewById(R.id.Sqrt);
+        Log = findViewById(R.id.Log);
         Result = findViewById(R.id.textView);
 
         // Set click listeners
@@ -38,6 +48,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Sub.setOnClickListener(this);
         Mul.setOnClickListener(this);
         Div.setOnClickListener(this);
+        Sin.setOnClickListener(this);
+        Cos.setOnClickListener(this);
+        Tan.setOnClickListener(this);
+        Sqrt.setOnClickListener(this);
+        Log.setOnClickListener(this);
     }
 
     @Override
@@ -72,11 +87,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Result.setText("Cannot divide by zero");
                 return;
             }
-        } else {
+        }else if (v.getId() == R.id.Sin) {
+            oper = "Sin";
+            result = (float) Math.sin(num1);
+        }
+        else if (v.getId() == R.id.Cos) {
+            oper = "Cos";
+            result = (float) Math.cos(num1);
+        }
+        else if (v.getId() == R.id.Tan) {
+            oper = "Tan";
+            result = (float) Math.tan(num1);
+        }
+        else if (v.getId() == R.id.Sqrt) {
+            oper = "Sqrt";
+            result = (float) Math.sqrt(num1);
+        }
+        else if (v.getId() == R.id.Log) {
+            oper = "Log";
+            result = (float) Math.log(num1);
+        }
+            else {
             return;
         }
 
         // Form the output line
-        Result.setText(num1 + " " + oper + " " + num2 + " = " + result);
+        Result.setText(oper + " " + num1 + " = " + result);
     }
 }
